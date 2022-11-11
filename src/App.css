@@ -1,38 +1,109 @@
-.App {
-  text-align: center;
+/* Split the screen in half */
+.split1 {
+  height: 100%;
+  width: 20%;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  overflow-x: hidden;
+  padding-top: 20px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.split2 {
+  height: 100%;
+  width: 80%;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  overflow-x: hidden;
+  padding-top: 0px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+/* Control the left side */
+.left {
+  left: 0;
+  background-color: #242933;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+/* Control the right side */
+.right {
+  right: 0;
+  background-color: white;
+}
+
+.title1{
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+hr {
+  margin: 40px 0;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.hr1 {
+  border: 0;
+  border-top: 1px solid white;
+}
+.hr2 {
+  border: 0;
+  border-top: 2px solid darkslategrey;
+}
+
+.nav-header{
+  box-shadow: 0 4px 4px 0 rgba(41, 121, 10, 0.2);
+  top: 0;
+  position: static;
+  background-color: #60C041;
+  margin: 0;
+}
+
+.item1{
+  display: inline-block;
+  color: whitesmoke;
+}
+
+.righti{
+  position: absolute;
+  right: 0;
+}
+
+
+.bottom {
+  position: absolute;
+  color: grey;
+  text-align: center;
+  align-items: center;
+  display: flex;
+  transform: translate(20%, 0%);
+  bottom: 0; /* set the bottom to 0*/
+}
+
+
+.nav-link.active{
+  color: #ffffff;
+  background-color: #31426157;
+  border-left: 5px solid #60C041;
+}
+
+.sidebar-items{
+  padding-left: 3;
+  list-style-position: inside;
+  list-style: none;
+}
+
+.thd{
+  background-color: #242933;
+}
+/* If you want the content centered horizontally and vertically */
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+/* Style the image inside the centered container, if needed */
+.centered img {
+  width: 150px;
+  border-radius: 50%;
 }
