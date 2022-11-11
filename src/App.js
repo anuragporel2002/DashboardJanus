@@ -6,14 +6,14 @@ class App extends Component {
   constructor(){
     super();
     this.state={
-      data:null
+      dat:null
     }
   }
 
   componentDidMount(){
     fetch('https://api.covalenthq.com/v1/1/xy=k/uniswap_v2/tokens/address/0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2/transactions/?quote-currency=USD&format=JSON&page-size=5&key=ckey_6648a422319b43a8a507ece94a5').then((response)=>{
       response.json().then((result)=>{
-        this.setState({data:result.data})
+        this.setState({dat:result.data})
       })
     })
   }
@@ -50,33 +50,45 @@ class App extends Component {
             <table className="table table-bordered">
               <thead className="thd">
                 <tr>
-                  <th scope="col" className='title1'>S.No.</th>
-                  <th scope="col" className='title1'>Token1 Contract Name</th>
-                  <th scope="col" className='title1'>Token2 Contract Name</th>
-                  <th scope="col" className='title1'>Handle</th>
+                  <th scope="col" className='title1'>SN</th>
+                  <th scope="col" className='title1'>Contract_Name1</th>
+                  <th scope="col" className='title1'>Contract_Name2</th>
+                  <th scope="col" className='title1'>Amount_0_In (Cr.)</th>
+                  <th scope="col" className='title1'>Amount_1_In (Cr.)</th>
+                  <th scope="col" className='title1'>Amount_0_Out (Cr.)</th>
+                  <th scope="col" className='title1'>Amount_1_Out (Cr.)</th>
+                  <th scope="col" className='title1'>Total Quote</th>
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <th scope="row">1</th>
-                  <td>Mark</td>
-                  <td>Otto</td>
-                  <td>@mdo</td>
-                </tr>
-                <tr>
-                  <th scope="row">2</th>
-                  <td>Jacob</td>
-                  <td>Thornton</td>
-                  <td>@fat</td>
-                </tr>
-                <tr>
-                  <th scope="row">3</th>
-                  <td>Larry</td>
-                  <td>the Bird</td>
-                  <td>@twitter</td>
-                </tr>
+                {
+                  this.state.dat?
+                  this.state.dat.items.map((item,index)=>
+                  <tr>
+                    <td>{index+1}</td>
+                    <td>{item.token_0.contract_name}</td>
+                    <td>{item.token_1.contract_name}</td>
+                    <td>{item.amount_0_in/10000000}</td>
+                    <td>{item.amount_1_in/10000000}</td>
+                    <td>{item.amount_0_out/10000000}</td>
+                    <td>{item.amount_0_out/10000000}</td>
+                    <td>{item.total_quote}</td>
+                  </tr>
+                  )
+                  :<tr>
+                    <td>Loading...</td>
+                    <td>Loading...</td>
+                    <td>Loading...</td>
+                    <td>Loading...</td>
+                    <td>Loading...</td>
+                    <td>Loading...</td>
+                    <td>Loading...</td>
+                    <td>Loading...</td>
+                  </tr>
+                }
               </tbody>
             </table>
+            
           </div>
         </div>
       </div>
